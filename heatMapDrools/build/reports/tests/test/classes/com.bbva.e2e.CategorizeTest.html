@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class com.bbva.e2e.CategorizeTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class com.bbva.e2e.CategorizeTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.bbva.e2e.html">com.bbva.e2e</a> &gt; CategorizeTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">5.250s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+<li>
+<a href="#tab2">Standard error</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">testIntensivo</td>
+<td class="success">5.250s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>package com.bbva.e2e;
+//generated from Decision Table
+import com.bbva.e2e.model.ApxTransactionResumeJson;
+// rule values at A11, header at A6
+rule &quot;IntensivoAceptada&quot;
+	when
+		apxTrx : ApxTransactionResumeJson(apxTrx.getMaxejecuciones() &gt; 3600, apxTrx.getMaxejecuciones() &lt;= 999999999, apxTrx.getAvgtime() &gt; 0, apxTrx.getAvgtime() &lt;= 200)
+	then
+		apxTrx.setUso(&quot;INTENSIVO&quot;);
+		apxTrx.setEstatus(&quot;ACEPTADA&quot;);
+end
+
+// rule values at A12, header at A6
+rule &quot;IntensivoOptimizable&quot;
+	when
+		apxTrx : ApxTransactionResumeJson(apxTrx.getMaxejecuciones() &gt; 3600, apxTrx.getMaxejecuciones() &lt;= 999999999, apxTrx.getAvgtime() &gt; 200, apxTrx.getAvgtime() &lt;= 400)
+	then
+		apxTrx.setUso(&quot;INTENSIVO&quot;);
+		apxTrx.setEstatus(&quot;OPTIMIZABLE&quot;);
+end
+
+// rule values at A13, header at A6
+rule &quot;IntensivoRechazada&quot;
+	when
+		apxTrx : ApxTransactionResumeJson(apxTrx.getMaxejecuciones() &gt; 3600, apxTrx.getMaxejecuciones() &lt;= 999999999, apxTrx.getAvgtime() &gt; 400, apxTrx.getAvgtime() &lt;= 999999999)
+	then
+		apxTrx.setUso(&quot;INTENSIVO&quot;);
+		apxTrx.setEstatus(&quot;RECHAZADA&quot;);
+end
+
+// rule values at A14, header at A6
+rule &quot;AltoAceptada&quot;
+	when
+		apxTrx : ApxTransactionResumeJson(apxTrx.getMaxejecuciones() &gt; 1000, apxTrx.getMaxejecuciones() &lt;= 3600, apxTrx.getAvgtime() &gt; 0, apxTrx.getAvgtime() &lt;= 400)
+	then
+		apxTrx.setUso(&quot;ALTO&quot;);
+		apxTrx.setEstatus(&quot;ACEPTADA&quot;);
+end
+
+// rule values at A15, header at A6
+rule &quot;AltoOptimizable&quot;
+	when
+		apxTrx : ApxTransactionResumeJson(apxTrx.getMaxejecuciones() &gt; 1000, apxTrx.getMaxejecuciones() &lt;= 3600, apxTrx.getAvgtime() &gt; 400, apxTrx.getAvgtime() &lt;= 800)
+	then
+		apxTrx.setUso(&quot;ALTO&quot;);
+		apxTrx.setEstatus(&quot;OPTIMIZABLE&quot;);
+end
+
+// rule values at A16, header at A6
+rule &quot;AltoRechazada&quot;
+	when
+		apxTrx : ApxTransactionResumeJson(apxTrx.getMaxejecuciones() &gt; 1000, apxTrx.getMaxejecuciones() &lt;= 3600, apxTrx.getAvgtime() &gt; 800, apxTrx.getAvgtime() &lt;= 999999999)
+	then
+		apxTrx.setUso(&quot;ALTO&quot;);
+		apxTrx.setEstatus(&quot;RECHAZADA&quot;);
+end
+
+// rule values at A17, header at A6
+rule &quot;ModeradoAceptada&quot;
+	when
+		apxTrx : ApxTransactionResumeJson(apxTrx.getMaxejecuciones() &gt; 300, apxTrx.getMaxejecuciones() &lt;= 1000, apxTrx.getAvgtime() &gt; 0, apxTrx.getAvgtime() &lt;= 800)
+	then
+		apxTrx.setUso(&quot;MODERADO&quot;);
+		apxTrx.setEstatus(&quot;ACEPTADA&quot;);
+end
+
+// rule values at A18, header at A6
+rule &quot;ModeradoOptimizable&quot;
+	when
+		apxTrx : ApxTransactionResumeJson(apxTrx.getMaxejecuciones() &gt; 300, apxTrx.getMaxejecuciones() &lt;= 1000, apxTrx.getAvgtime() &gt; 800, apxTrx.getAvgtime() &lt;= 1500)
+	then
+		apxTrx.setUso(&quot;MODERADO&quot;);
+		apxTrx.setEstatus(&quot;OPTIMIZABLE&quot;);
+end
+
+// rule values at A19, header at A6
+rule &quot;ModeradoRechazada&quot;
+	when
+		apxTrx : ApxTransactionResumeJson(apxTrx.getMaxejecuciones() &gt; 300, apxTrx.getMaxejecuciones() &lt;= 1000, apxTrx.getAvgtime() &gt; 1500, apxTrx.getAvgtime() &lt;= 999999999)
+	then
+		apxTrx.setUso(&quot;MODERADO&quot;);
+		apxTrx.setEstatus(&quot;RECHAZADA&quot;);
+end
+
+// rule values at A20, header at A6
+rule &quot;BajoAceptada&quot;
+	when
+		apxTrx : ApxTransactionResumeJson(apxTrx.getMaxejecuciones() &gt; 40, apxTrx.getMaxejecuciones() &lt;= 300, apxTrx.getAvgtime() &gt; 0, apxTrx.getAvgtime() &lt;= 1500)
+	then
+		apxTrx.setUso(&quot;BAJO&quot;);
+		apxTrx.setEstatus(&quot;ACEPTADA&quot;);
+end
+
+// rule values at A21, header at A6
+rule &quot;BajoOptimizable&quot;
+	when
+		apxTrx : ApxTransactionResumeJson(apxTrx.getMaxejecuciones() &gt; 40, apxTrx.getMaxejecuciones() &lt;= 300, apxTrx.getAvgtime() &gt; 1500, apxTrx.getAvgtime() &lt;= 5000)
+	then
+		apxTrx.setUso(&quot;BAJO&quot;);
+		apxTrx.setEstatus(&quot;OPTIMIZABLE&quot;);
+end
+
+// rule values at A22, header at A6
+rule &quot;BajoRechazada&quot;
+	when
+		apxTrx : ApxTransactionResumeJson(apxTrx.getMaxejecuciones() &gt; 40, apxTrx.getMaxejecuciones() &lt;= 300, apxTrx.getAvgtime() &gt; 5000, apxTrx.getAvgtime() &lt;= 999999999)
+	then
+		apxTrx.setUso(&quot;BAJO&quot;);
+		apxTrx.setEstatus(&quot;RECHAZADA&quot;);
+end
+
+// rule values at A23, header at A6
+rule &quot;ResidualAceptada&quot;
+	when
+		apxTrx : ApxTransactionResumeJson(apxTrx.getMaxejecuciones() &gt; 0, apxTrx.getMaxejecuciones() &lt;= 40, apxTrx.getAvgtime() &gt; 0, apxTrx.getAvgtime() &lt;= 1500)
+	then
+		apxTrx.setUso(&quot;RESIDUAL&quot;);
+		apxTrx.setEstatus(&quot;ACEPTADA&quot;);
+end
+
+// rule values at A24, header at A6
+rule &quot;ResidualOptimizable&quot;
+	when
+		apxTrx : ApxTransactionResumeJson(apxTrx.getMaxejecuciones() &gt; 0, apxTrx.getMaxejecuciones() &lt;= 40, apxTrx.getAvgtime() &gt; 1500, apxTrx.getAvgtime() &lt;= 5000)
+	then
+		apxTrx.setUso(&quot;RESIDUAL&quot;);
+		apxTrx.setEstatus(&quot;OPTIMIZABLE&quot;);
+end
+
+// rule values at A25, header at A6
+rule &quot;ResidualRechazada&quot;
+	when
+		apxTrx : ApxTransactionResumeJson(apxTrx.getMaxejecuciones() &gt; 0, apxTrx.getMaxejecuciones() &lt;= 40, apxTrx.getAvgtime() &gt; 5000, apxTrx.getAvgtime() &lt;= 999999999)
+	then
+		apxTrx.setUso(&quot;RESIDUAL&quot;);
+		apxTrx.setEstatus(&quot;RECHAZADA&quot;);
+end
+
+
+</pre>
+</span>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Loading kie.conf from  
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Discovered kie.conf url=jar:file:/C:/Users/mb73308/.gradle/caches/modules-2/files-2.1/org.kie/kie-ci/7.4.1.Final/98806793e1e15057b3502c84318c7171651d02c1/kie-ci-7.4.1.Final.jar!/META-INF/kie.conf 
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.kie.scanner.KieScannerFactoryServiceImpl
+
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.kie.scanner.MavenClassLoaderResolver
+
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Loading kie.conf from  
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Discovered kie.conf url=jar:file:/C:/Users/mb73308/.gradle/caches/modules-2/files-2.1/org.drools/drools-decisiontables/7.4.1.Final/68b780af8120b3a12927b1aa5e41be01910febf0/drools-decisiontables-7.4.1.Final.jar!/META-INF/kie.conf 
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.drools.decisiontable.DecisionTableProviderImpl
+
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Loading kie.conf from  
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Discovered kie.conf url=jar:file:/C:/Users/mb73308/.gradle/caches/modules-2/files-2.1/org.drools/drools-compiler/7.4.1.Final/829c2a704465c4be9752bc77e2f1a5ee10a87c1c/drools-compiler-7.4.1.Final.jar!/META-INF/kie.conf 
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.drools.compiler.builder.impl.KnowledgeBuilderFactoryServiceImpl
+
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.drools.compiler.kie.builder.impl.KieServicesImpl
+
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Loading kie.conf from  
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Discovered kie.conf url=jar:file:/C:/Users/mb73308/.gradle/caches/modules-2/files-2.1/org.drools/drools-core/7.4.1.Final/7f34154ea9ba000862444d82e8628f3e8a60789e/drools-core-7.4.1.Final.jar!/META-INF/kie.conf 
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.drools.core.concurrent.ExecutorProviderImpl
+
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.drools.core.marshalling.impl.MarshallerProviderImpl
+
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.drools.core.io.impl.ResourceFactoryServiceImpl
+
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Loading kie.conf from  
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Discovered kie.conf url=jar:file:/C:/Users/mb73308/.gradle/caches/modules-2/files-2.1/org.kie/kie-internal/7.4.1.Final/34ba5b90ec0ae64a57cb2304f4acd68c404daf85/kie-internal-7.4.1.Final.jar!/META-INF/kie.conf 
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.kie.internal.services.KieBeliefsImpl
+
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.kie.internal.services.KieAssemblersImpl
+
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.kie.internal.services.KieRuntimesImpl
+
+[Test worker] INFO org.kie.api.internal.utils.ServiceDiscoveryImpl - Adding Service org.kie.internal.services.KieWeaversImpl
+
+[Test worker] WARN org.appformer.maven.integration.embedder.MavenSettings - Environment variable M2_HOME is not set
+[Test worker] INFO org.drools.compiler.kie.builder.impl.KieRepositoryImpl - KieModule was added: MemoryKieModule[releaseId=org.default:artifact:1.0.0-SNAPSHOT]
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 5.2.1</a> at 9 oct 2019 19:03:27</p>
+</div>
+</div>
+</body>
+</html>
